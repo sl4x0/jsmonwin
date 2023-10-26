@@ -60,7 +60,7 @@ On Windows, you can use the Task Scheduler app to schedule the execution of a Po
 7. **Program/script**:
 
    - Browse to the location of your PowerShell executable, typically `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`.
-   - In the "Add arguments" field, provide the path to your PowerShell script, e.g., `"C:\Path\To\YourScript.ps1"`. Make sure to enclose the script path in double quotes.
+   - In the "Add arguments" field, provide the path to your PowerShell script, e.g., `"C:\Path\To\jsmonwin.ps1"`. Make sure to enclose the script path in double quotes.
 
 
 After creating the task, you can test it by right-clicking on the task in the Task Scheduler and selecting "Run." This will execute the task immediately.
