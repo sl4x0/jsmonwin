@@ -8,21 +8,28 @@ import json
 import difflib
 import jsbeautifier
 
-from decouple import config
+from dotenv import load_dotenv
 
-TELEGRAM_TOKEN = config("JSMON_TELEGRAM_TOKEN", default="CHANGEME")
-TELEGRAM_CHAT_ID = config("JSMON_TELEGRAM_CHAT_ID", default="CHANGEME")
-SLACK_TOKEN = config("JSMON_SLACK_TOKEN", default="CHANGEME")
-SLACK_CHANNEL_ID = config("JSMON_SLACK_CHANNEL_ID", default="CHANGEME")
-NOTIFY_SLACK = config("JSMON_NOTIFY_SLACK", default=False, cast=bool)
-NOTIFY_TELEGRAM = config("JSMON_NOTIFY_TELEGRAM", default=False, cast=bool)
+# Load variables from .env file
+load_dotenv()
+
+TELEGRAM_TOKEN = os.getenv("JSMON_TELEGRAM_TOKEN", "CHANGEME")
+TELEGRAM_CHAT_ID = os.getenv("JSMON_TELEGRAM_CHAT_ID", "CHANGEME")
+SLACK_TOKEN = os.getenv("JSMON_SLACK_TOKEN", "CHANGEME")
+SLACK_CHANNEL_ID = os.getenv("JSMON_SLACK_CHANNEL_ID", "CHANGEME")
+NOTIFY_SLACK = os.getenv("JSMON_NOTIFY_SLACK", "False").lower() == "true"
+NOTIFY_TELEGRAM = os.getenv("JSMON_NOTIFY_TELEGRAM", "False").lower() == "true"
+
 if NOTIFY_SLACK:
     from slack import WebClient
     from slack.errors import SlackApiError
-    if(SLACK_TOKEN == "CHANGEME"):
-        print("ERROR SLACK TOKEN NOT FOUND!")
+
+    if SLACK_TOKEN == "CHANGEME":
+        print("ERROR: SLACK TOKEN NOT FOUND!")
         exit(1)
-    client=WebClient(token=SLACK_TOKEN)
+    client = WebClient(token=SLACK_TOKEN)
+
+
 
 
 def is_valid_endpoint(endpoint):
