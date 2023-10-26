@@ -3,22 +3,27 @@ JSMonWin - JavaScript Change Monitor for BugBounty in Windows
 
 Using this script, you can configure a number of JavaScript files on websites that you want to monitor. Everytime you run this script, these files will be fetched and compared to the previously fetched version. If they have changed, you will be notified via Telegram with a message containing a link to the script, the changed filesizes, and a diff file to inspect the changes easily.
 
-![](static/telegram.png)
-
-![](static/diff.png)
+<div style="display: flex;">
+    <div style="flex: 1;">
+        <img src="static/telegram.png" alt="Telegram Image" style="max-width: 200px; max-height: 150px;">
+    </div>
+    <div style="flex: 1;">
+        <img src="static/diff.png" alt="Diff Image" style="max-width: 200px; max-height: 150px;">
+    </div>
+</div>
 
 ## Installation
 
 To install JSMon:
-```bash
+```console
 git clone https://github.com/sl4x0/jsmonwin.git 
 cd jsmonwin
 python setup.py install
 ```
 You need to set up your Slack or Telegram token in the Environment, e.g. by creating a `.env` File:
-`vscode => New File => .env`
+`VSCode => New File => .env`
 With The Contents:
-```
+```console
 JSMONWIN_NOTIFY_TELEGRAM=True
 JSMONWIN_TELEGRAM_TOKEN=YOUR TELEGRAM TOKEN
 JSMONWIN_TELEGRAM_CHAT_ID=YOUR TELEGRAM CHAT ID
