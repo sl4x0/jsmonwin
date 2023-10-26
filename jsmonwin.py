@@ -69,14 +69,14 @@ def get_hash(string):
 def save_endpoint(endpoint, ephash, eptext):
     # save endpoint content to file
     # add it to  list of 
-    with open("jsmon.json", "r") as jsm:
+    with open("jsmonwin.json", "r") as jsm:
         jsmd = json.load(jsm)
         if endpoint in jsmd.keys():
             jsmd[endpoint].append(ephash)
         else:
             jsmd[endpoint] = [ephash]
 
-    with open("jsmon.json", "w") as jsm:
+    with open("jsmonwin.json", "w") as jsm:
         json.dump(jsmd,jsm)
 
     with open("downloads/{}".format(ephash), "w") as epw:
@@ -86,7 +86,7 @@ def save_endpoint(endpoint, ephash, eptext):
 def get_previous_endpoint_hash(endpoint):
     # get previous endpoint version
     # or None if doesnt exist
-    with open("jsmon.json", "r") as jsm:
+    with open("jsmonwin.json", "r") as jsm:
         jsmd = json.load(jsm)
         if endpoint in jsmd.keys():
             return jsmd[endpoint][-1]
@@ -192,4 +192,3 @@ def main():
 
 
 main()        
-
